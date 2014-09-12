@@ -25,3 +25,5 @@ build/Release
 node_modules
 
 /build
+app/bower_components
+test/angular-testbundle.js
