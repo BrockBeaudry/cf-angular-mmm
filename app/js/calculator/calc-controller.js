@@ -1,15 +1,16 @@
 'use strict';
 
 module.exports = function(app) {
-    app.controller('calculatorController', ['$scope', 'math', function($scope, math) {
+    app.controller('calculatorController', ['$scope', 'statistics', function($scope,
+        statistics) {
 
-        $scope.math = math;
+        $scope.math = statistics;
         $scope.calculator = {};
         $scope.calculator.operations = [];
         $scope.calculator.results = [];
 
         for(var key in $scope.math) {
-            $scope.calculator.operations.push({name: key, action: math[key],
+            $scope.calculator.operations.push({name: key, action: $scope.math[key],
                 use: true});
         }
 
@@ -20,7 +21,7 @@ module.exports = function(app) {
 
             $scope.calculator.operations.forEach(function(operation) {
                 if (operation.use) {
-                    results[operation.name] = math[operation.name](results.data);
+                    results[operation.name] = $scope.math[operation.name](results.data);
                 }
             });
 
