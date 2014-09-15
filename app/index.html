@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div data-ng-app="calculatorApp">
+    <div data-ng-controller="calculatorController">
+      <!-- toggle for each function in math -->
+      <div data-ng-repeat="operation in calculator.operations">
+        {{operation.name}} <input type="checkbox" data-ng-checked="{{operation.use}}"
+          data-ng-model="operation.use">
+      </div>
+      <!-- data set input form -->
+      <form novalidate>
+        <p>Enter a comma-separated data set: </p>
+        <input type="text" ng-model="calculator.input" ng-list>
+        <button data-ng-click="calculate(calculator.input)">Calculate (for science)</button>
+      </form>
+      <!-- display the result of each calculation for a given data set -->
+      <div data-ng-if="calculator.results.length > 0">
+        <div data-ng-repeat="result in calculator.results">
+          <h5>Calculation {{$index + 1}}:
+          <div data-ng-repeat="(name, value) in result">
+            {{name}}: {{value}}
+          </div>
+          </br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>
