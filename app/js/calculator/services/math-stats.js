@@ -27,7 +27,7 @@ module.exports = function(app) {
             // If there is an even amount of numbers
             if(numbers.length % 2 === 0) {
                 // Find the median by averaging the two middle numbers.
-                return ((numbers[middle] + numbers[middle + 1]) / 2);
+                return ((numbers[middle] + numbers[middle - 1]) / 2);
             } else {
                 return numbers[middle];
             }
@@ -36,7 +36,7 @@ module.exports = function(app) {
         // Returns the most common number in an array or false if no element is repeated.
         stats.mode = function(numbers) {
             var bucket = {};
-            var maxCount = 0;
+            var maxCount = 1;
             var result = null;
 
             numbers.forEach(function(number) {
