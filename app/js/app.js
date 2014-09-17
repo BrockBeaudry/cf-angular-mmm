@@ -11,6 +11,9 @@ require('./calculator/calc-controller')(calculatorApp);
 // Services
 require('./calculator/services/math-stats')(calculatorApp);
 
+// Directives
+require('./calculator/directives/calculator')(calculatorApp);
+
 calculatorApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/calculator', {
